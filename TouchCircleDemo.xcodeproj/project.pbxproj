@@ -14,6 +14,7 @@
 		B22FE73D1D92F49000A500B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22FE73B1D92F49000A500B7 /* LaunchScreen.storyboard */; };
 		B22FE7481D92F49000A500B7 /* TouchCircleDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7471D92F49000A500B7 /* TouchCircleDemoTests.swift */; };
 		B22FE7531D92F49000A500B7 /* TouchCircleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7521D92F49000A500B7 /* TouchCircleDemoUITests.swift */; };
+		B22FE7611D92F65300A500B7 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7601D92F65300A500B7 /* CircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B22FE74E1D92F49000A500B7 /* TouchCircleDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchCircleDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22FE7521D92F49000A500B7 /* TouchCircleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchCircleDemoUITests.swift; sourceTree = "<group>"; };
 		B22FE7541D92F49000A500B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B22FE7601D92F65300A500B7 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				B22FE7321D92F48F00A500B7 /* AppDelegate.swift */,
 				B22FE7341D92F48F00A500B7 /* ViewController.swift */,
 				B22FE7361D92F48F00A500B7 /* Main.storyboard */,
+				B22FE7601D92F65300A500B7 /* CircleView.swift */,
 				B22FE7391D92F49000A500B7 /* Assets.xcassets */,
 				B22FE73B1D92F49000A500B7 /* LaunchScreen.storyboard */,
 				B22FE73E1D92F49000A500B7 /* Info.plist */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22FE7611D92F65300A500B7 /* CircleView.swift in Sources */,
 				B22FE7351D92F48F00A500B7 /* ViewController.swift in Sources */,
 				B22FE7331D92F48F00A500B7 /* AppDelegate.swift in Sources */,
 			);
