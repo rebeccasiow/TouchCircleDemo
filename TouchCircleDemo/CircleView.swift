@@ -30,8 +30,8 @@ class CircleView: UIView {
         
         let path = UIBezierPath()
         
-        path.addArcWithCenter(arcCenter, radius: arcRadius, startAngle: <#T##CGFloat#>, endAngle: <#T##CGFloat#>, clockwise: <#T##Bool#>)
-        
+        path.addArcWithCenter(arcCenter, radius: arcRadius, startAngle: 0, endAngle: 2, clockwise: true)
+        path.fill()
     }
 
     /*

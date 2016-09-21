@@ -6,6 +6,9 @@
 //  Copyright © 2016 Rebecca Siow. All rights reserved.
 //
 
+
+//Navigation Controller: Editor -> Embed in -> Navigation Controller, add bar button item from the menu
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -29,17 +32,20 @@ class ViewController: UIViewController {
      Idea: Enlarge radius of a circle on touch and drag out. 
      Use: touchesBegan and touchesMoved(called when the finger is on the screen and moving, keeps track of the latest touch)
      */
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         //locates touch as a coordinate from the set of UITouches, needs to be unwrapped
         let touch = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesBegan point: \(touch)")
-        let myRect = CGRect(x: touch.x, y: touch.y, width: 80, height: 80)
         
+        //let myRect = CGRect(x: touch.x, y: touch.y, width: 80, height: 80)
+        let myRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+
         //TouchCircle is our new Cocoa Touch Class
-        let myCircleView = CircleView(frame: myRect)
-        myCircleView.backgroundColor = UIColor.clearColor()
+        //let myCircleView = CircleView(frame: myRect)
+        currCircle = CircleView(frame: myRect)
+        currCircle!.backgroundColor = UIColor.clearColor()
+        currCircleCenter = touch
         
         self.view.addSubview(currCircle!)
         
