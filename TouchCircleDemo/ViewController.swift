@@ -31,17 +31,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var clearViewButton: UIBarButtonItem!
     
     @IBAction func clearView(sender: UIBarButtonItem) {
-        view.setNeedsDisplay()
+        //view.setNeedsDisplay()
         //clearViewButton.accessibilityActivate()
         self.clearViewButton.enabled = true;
+        self.view.clearsContextBeforeDrawing = true
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         
     }
-    var currCircleCenter = CGPointZero
+    
     var currCircle: CircleView? = nil
+    var currCircleCenter = CGPointZero
+    
+    var startCoordLine = CGPointZero
+    var currLine: LineView? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearViewButton.accessibilityActivate()
         // Do any additional setup after loading the view, typically from a nib.
+        navigationItem.rightBarButtonItem = clearViewButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,28 +68,42 @@ class ViewController: UIViewController {
         //locates touch as a coordinate from the set of UITouches, needs to be unwrapped
         let touch = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesBegan point: \(touch)")
-        
-        //let myRect = CGRect(x: touch.x, y: touch.y, width: 80, height: 80)
-        let myRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
 
+        startCoordLine = touch
+        
+        let myRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        
+        currLine = LineView(frame: myRect)
+        currLine?.backgroundColor = UIColor.clearColor()
+        currLine?.lineStart = touch
+        currLine?.lineEnd = touch
+        
+        
+        
+        
+        self.view.addSubview(currLine!)
+        
         //TouchCircle is our new Cocoa Touch Class
-        //let myCircleView = CircleView(frame: myRect)
+        /**
         currCircle = CircleView(frame: myRect)
         currCircle!.backgroundColor = UIColor.clearColor()
         currCircleCenter = touch
-        
+ 
         self.view.addSubview(currCircle!)
+        **/
         
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
         let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesMoved point: \(touchPoint)")
-        let distance = sqrt(pow(touchPoint.y - currCircleCenter.y, 2) + pow(touchPoint.x - currCircleCenter.x, 2))
         
-        currCircle?.updateCircle(currCircleCenter,radius: distance)
+        currLine?.updateLine(startCoordLine, endCoord: touchPoint)
         
+        //let distance = sqrt(pow(touchPoint.y - currCircleCenter.y, 2) + pow(touchPoint.x - currCircleCenter.x, 2))
         
+        //currCircle?.updateCircle(currCircleCenter,radius: distance)
         
     }
     

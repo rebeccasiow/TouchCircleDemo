@@ -15,6 +15,7 @@
 		B22FE7481D92F49000A500B7 /* TouchCircleDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7471D92F49000A500B7 /* TouchCircleDemoTests.swift */; };
 		B22FE7531D92F49000A500B7 /* TouchCircleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7521D92F49000A500B7 /* TouchCircleDemoUITests.swift */; };
 		B22FE7611D92F65300A500B7 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7601D92F65300A500B7 /* CircleView.swift */; };
+		B2D85AF91D96FA62004E8E13 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D85AF81D96FA62004E8E13 /* LineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		B22FE7521D92F49000A500B7 /* TouchCircleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchCircleDemoUITests.swift; sourceTree = "<group>"; };
 		B22FE7541D92F49000A500B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B22FE7601D92F65300A500B7 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		B2D85AF81D96FA62004E8E13 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				B22FE7321D92F48F00A500B7 /* AppDelegate.swift */,
 				B22FE7341D92F48F00A500B7 /* ViewController.swift */,
+				B2D85AF81D96FA62004E8E13 /* LineView.swift */,
 				B22FE7361D92F48F00A500B7 /* Main.storyboard */,
 				B22FE7601D92F65300A500B7 /* CircleView.swift */,
 				B22FE7391D92F49000A500B7 /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D85AF91D96FA62004E8E13 /* LineView.swift in Sources */,
 				B22FE7611D92F65300A500B7 /* CircleView.swift in Sources */,
 				B22FE7351D92F48F00A500B7 /* ViewController.swift in Sources */,
 				B22FE7331D92F48F00A500B7 /* AppDelegate.swift in Sources */,
@@ -488,6 +492,7 @@
 				B22FE7591D92F49000A500B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B22FE75A1D92F49000A500B7 /* Build configuration list for PBXNativeTarget "TouchCircleDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +501,7 @@
 				B22FE75C1D92F49000A500B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B22FE75D1D92F49000A500B7 /* Build configuration list for PBXNativeTarget "TouchCircleDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +510,7 @@
 				B22FE75F1D92F49000A500B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
