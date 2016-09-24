@@ -9,12 +9,33 @@
 
 //Navigation Controller: Editor -> Embed in -> Navigation Controller, add bar button item from the menu
 
+/**
+ [40 points] Users can draw continuous lines by tapping and dragging.
+ [10 points] Lines drawn must be smooth (no jagged edges).
+ [5 points] Users can “undo” to erase the last line drawn.
+ [5 points] Users can selected from multiple (at least 5) color options.
+ [5 points] There is a slider to adjust the thickness of drawn lines.
+ [10 points] Single taps result in dots.
+ [5 points] Users can easily erase all lines on the page.
+ [20 points] Creative portion: Add 2 other small features (ability to add a title, users can change
+ the background color of the page, there is a button that draws a perfect circle, etc.)
+
+ **/
+
 import UIKit
 
 class ViewController: UIViewController {
     
     //keep track of first point of touch from touchesBegan to use the touch from touchesMoved to resize the circle
     
+    @IBOutlet weak var clearViewButton: UIBarButtonItem!
+    
+    @IBAction func clearView(sender: UIBarButtonItem) {
+        view.setNeedsDisplay()
+        //clearViewButton.accessibilityActivate()
+        self.clearViewButton.enabled = true;
+        
+    }
     var currCircleCenter = CGPointZero
     var currCircle: CircleView? = nil
 
@@ -61,5 +82,6 @@ class ViewController: UIViewController {
         
         
     }
+    
 }
 
