@@ -96,6 +96,8 @@ class ViewController: UIViewController {
         //let dotView = UIView(frame:dot)
         //self.view.addSubview()
         
+        
+        
         currLine = LineView(frame: myRect)
         currLine?.backgroundColor = UIColor.clearColor()
         currLine?.lineStart = touch
@@ -129,6 +131,7 @@ class ViewController: UIViewController {
         //currCircle?.updateCircle(currCircleCenter,radius: distance)
         
     }
+    
     
 }
 

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Draw Things-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TouchCircleDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="2kj-Gk-DDq">
+                    <navigationItem key="navigationItem" title="Draw Things" id="2kj-Gk-DDq">
                         <barButtonItem key="leftBarButtonItem" title="Clear" id="Hey-Qb-1Hd">
                             <connections>
                                 <action selector="clearView:" destination="BYZ-38-t0r" id="GEb-tO-pvq"/>
