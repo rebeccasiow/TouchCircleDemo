@@ -73,6 +73,10 @@ class ViewController: UIViewController {
         
         let myRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
+        let dot = CGRect(x: touch.x, y: touch.y, width: 1, height: 1)
+        let dotView = UIView(frame:dot)
+        //self.view.addSubview()
+
         currLine = LineView(frame: myRect)
         currLine?.backgroundColor = UIColor.clearColor()
         currLine?.lineStart = touch

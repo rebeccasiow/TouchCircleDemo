@@ -17,8 +17,8 @@ class LineView: UIView {
         print("updateLine from this: x:(\(lineStart), y:\(lineEnd))")
         //changing to this point
         print(" to this: x:\(startCoord), y:\(endCoord))")
-         lineStart = startCoord
-         lineEnd = endCoord
+        lineStart = startCoord
+        lineEnd = endCoord
         setNeedsDisplay()
         //setneedsdisplay()
     }
@@ -27,7 +27,6 @@ class LineView: UIView {
         print("drawRect from point (\(lineStart) to this \(lineEnd))")
 
         let path = UIBezierPath()
-        
         path.moveToPoint(lineStart)
         path.addLineToPoint(lineEnd)
         path.closePath()
