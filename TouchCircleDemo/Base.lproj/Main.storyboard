@@ -18,22 +18,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Clear" id="Hey-Qb-1Hd">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="2kj-Gk-DDq">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="Hey-Qb-1Hd">
                             <connections>
                                 <action selector="clearView:" destination="BYZ-38-t0r" id="GEb-tO-pvq"/>
                             </connections>
                         </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="2kj-Gk-DDq"/>
+                        <barButtonItem key="rightBarButtonItem" title="Undo" id="6hp-Ay-n36">
+                            <connections>
+                                <action selector="undoLast:" destination="BYZ-38-t0r" id="BsB-ex-FRz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clearViewButton" destination="Hey-Qb-1Hd" id="ujs-0f-ftX"/>
+                        <outlet property="undoButton" destination="6hp-Ay-n36" id="Cji-BB-HVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="226"/>
+            <point key="canvasLocation" x="1057" y="246"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Ph-Ip-4yn">

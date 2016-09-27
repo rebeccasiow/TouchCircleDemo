@@ -30,6 +30,19 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var clearViewButton: UIBarButtonItem!
     
+    @IBOutlet weak var undoButton: UIBarButtonItem!
+    
+    @IBAction func undoLast(sender: UIBarButtonItem) {
+        
+        self.undoButton.enabled = true
+        self.view.clearsContextBeforeDrawing = true
+        
+        print("undo called")
+        let lastThing = self.view.subviews.last
+        lastThing?.removeFromSuperview()
+        
+        
+    }
     @IBAction func clearView(sender: UIBarButtonItem) {
         //view.setNeedsDisplay()
         //clearViewButton.accessibilityActivate()
@@ -48,10 +61,16 @@ class ViewController: UIViewController {
     var currLine: LineView? = nil
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        clearViewButton.accessibilityActivate()
         // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.rightBarButtonItem = clearViewButton
+
+    
+        clearViewButton.accessibilityActivate()
+        
+        navigationItem.leftBarButtonItem = clearViewButton
+        navigationItem.rightBarButtonItem = undoButton
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,10 +92,10 @@ class ViewController: UIViewController {
         
         let myRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
-        let dot = CGRect(x: touch.x, y: touch.y, width: 1, height: 1)
-        let dotView = UIView(frame:dot)
+        //let dot = CGRect(x: touch.x, y: touch.y, width: 1, height: 1)
+        //let dotView = UIView(frame:dot)
         //self.view.addSubview()
-
+        
         currLine = LineView(frame: myRect)
         currLine?.backgroundColor = UIColor.clearColor()
         currLine?.lineStart = touch

@@ -20,13 +20,14 @@ class LineView: UIView {
         lineStart = startCoord
         lineEnd = endCoord
         setNeedsDisplay()
-        //setneedsdisplay()
     }
     
     override func drawRect(rect: CGRect){
+        
         print("drawRect from point (\(lineStart) to this \(lineEnd))")
-
+        
         let path = UIBezierPath()
+        
         path.moveToPoint(lineStart)
         path.addLineToPoint(lineEnd)
         path.closePath()
