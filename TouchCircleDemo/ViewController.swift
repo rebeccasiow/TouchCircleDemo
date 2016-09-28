@@ -29,8 +29,6 @@ class ViewController: UIViewController {
     
     //keep track of first point of touch from touchesBegan to use the touch from touchesMoved to resize the circle
     
-    @IBOutlet weak var drawView: UIView!
-    
     @IBOutlet weak var lineThickness: UISlider!
     
     @IBOutlet weak var clearViewButton: UIBarButtonItem!
@@ -43,7 +41,7 @@ class ViewController: UIViewController {
         self.view.clearsContextBeforeDrawing = true
         
         print("undo called")
-        let lastThing = self.drawView.subviews.last
+        let lastThing = self.view.subviews.last
         lastThing?.removeFromSuperview()
         
         
@@ -53,8 +51,10 @@ class ViewController: UIViewController {
         //clearViewButton.accessibilityActivate()
         self.clearViewButton.enabled = true;
         self.view.clearsContextBeforeDrawing = true
-        for view in self.drawView.subviews {
-            view.removeFromSuperview()
+        for view in self.view.subviews {
+            if view.frame.height == (self.view.frame.height - 100) {
+                view.removeFromSuperview()
+            }
         }
         
     }
@@ -88,31 +88,37 @@ class ViewController: UIViewController {
      Use: touchesBegan and touchesMoved(called when the finger is on the screen and moving, keeps track of the latest touch)
      */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+
         //locates touch as a coordinate from the set of UITouches, needs to be unwrapped
-        let touch = (touches.first)!.locationInView(self.drawView) as CGPoint
+        let touch = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesBegan point: \(touch)")
-
-        startCoordLine = touch
         
-        //make static space for the formatting things to go at the bottom, slider, colors,
+        //if the first touch is outside of the bounds of drawRect
+        //let spacingForToolBar: CGFloat = 100
         
-        let drawRect = CGRect(x: 0, y: 0, width: self.drawView.frame.width, height: self.drawView.frame.height)
-
-        currLine = LineView(frame: drawRect)
-        currLine?.backgroundColor = UIColor.clearColor()
-        currLine?.lineStart = touch
-        currLine?.lineEnd = touch
-        
-        self.drawView.addSubview(currLine!)
-        
+        if touch.y < (self.view.frame.height - 100) {
+            startCoordLine = touch
+            
+            //make static space for the formatting things to go at the bottom, slider, colors,
+            
+            let drawingRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-100)
+            
+            currLine = LineView(frame: drawingRect)
+            currLine?.backgroundColor = UIColor.clearColor()
+            currLine?.lineStart = touch
+            currLine?.lineEnd = touch
+            
+            self.view.addSubview(currLine!)
+        }
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        let touchPoint = (touches.first)!.locationInView(self.drawView) as CGPoint
+        let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesMoved point: \(touchPoint)")
-        currLine?.updateLine(startCoordLine, endCoord: touchPoint)
+        if touchPoint.x >= 0 && touchPoint.y >= 0 {
+            currLine?.updateLine(startCoordLine, endCoord: touchPoint)
+        }
         
     }
     
