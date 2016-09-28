@@ -10,15 +10,16 @@
 //Navigation Controller: Editor -> Embed in -> Navigation Controller, add bar button item from the menu
 
 /**
- [40 points] Users can draw continuous lines by tapping and dragging.
- [10 points] Lines drawn must be smooth (no jagged edges).
- [5 points] Users can “undo” to erase the last line drawn.
+ DONE: [40 points] Users can draw continuous lines by tapping and dragging.
+ DONE: [10 points] Lines drawn must be smooth (no jagged edges).
+ DONE: [5 points] Users can “undo” to erase the last line drawn.
  [5 points] Users can selected from multiple (at least 5) color options.
  [5 points] There is a slider to adjust the thickness of drawn lines.
- [10 points] Single taps result in dots.
- [5 points] Users can easily erase all lines on the page.
+ DONE: [10 points] Single taps result in dots.
+ DONE: [5 points] Users can easily erase all lines on the page.
  [20 points] Creative portion: Add 2 other small features (ability to add a title, users can change
- the background color of the page, there is a button that draws a perfect circle, etc.)
+ the background color of the page, there is a button that draws a perfect circle, etc.) 
+  - redo maybe?
 
  **/
 
@@ -27,6 +28,10 @@ import UIKit
 class ViewController: UIViewController {
     
     //keep track of first point of touch from touchesBegan to use the touch from touchesMoved to resize the circle
+    
+    @IBOutlet weak var drawView: UIView!
+    
+    @IBOutlet weak var lineThickness: UISlider!
     
     @IBOutlet weak var clearViewButton: UIBarButtonItem!
     
@@ -38,7 +43,7 @@ class ViewController: UIViewController {
         self.view.clearsContextBeforeDrawing = true
         
         print("undo called")
-        let lastThing = self.view.subviews.last
+        let lastThing = self.drawView.subviews.last
         lastThing?.removeFromSuperview()
         
         
@@ -48,7 +53,7 @@ class ViewController: UIViewController {
         //clearViewButton.accessibilityActivate()
         self.clearViewButton.enabled = true;
         self.view.clearsContextBeforeDrawing = true
-        for view in self.view.subviews {
+        for view in self.drawView.subviews {
             view.removeFromSuperview()
         }
         
@@ -64,18 +69,18 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-    
-        clearViewButton.accessibilityActivate()
         
         navigationItem.leftBarButtonItem = clearViewButton
         navigationItem.rightBarButtonItem = undoButton
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func lineThicknessChanged(sender: UISlider) {
+        //let thickness = lineThickness.value
     }
     
     /*
@@ -85,45 +90,29 @@ class ViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         //locates touch as a coordinate from the set of UITouches, needs to be unwrapped
-        let touch = (touches.first)!.locationInView(self.view) as CGPoint
+        let touch = (touches.first)!.locationInView(self.drawView) as CGPoint
         print("Coordinates of touchesBegan point: \(touch)")
 
         startCoordLine = touch
         
-        let myRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        //make static space for the formatting things to go at the bottom, slider, colors,
         
-        //let dot = CGRect(x: touch.x, y: touch.y, width: 1, height: 1)
-        //let dotView = UIView(frame:dot)
-        //self.view.addSubview()
+        let drawRect = CGRect(x: 0, y: 0, width: self.drawView.frame.width, height: self.drawView.frame.height)
 
-        currLine = LineView(frame: myRect)
+        currLine = LineView(frame: drawRect)
         currLine?.backgroundColor = UIColor.clearColor()
         currLine?.lineStart = touch
         currLine?.lineEnd = touch
         
-        self.view.addSubview(currLine!)
-
-                
-        //TouchCircle is our new Cocoa Touch Class
-        /**
-        currCircle = CircleView(frame: myRect)
-        currCircle!.backgroundColor = UIColor.clearColor()
-        currCircleCenter = touch
- 
-        self.view.addSubview(currCircle!)
-        **/
+        self.drawView.addSubview(currLine!)
         
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
+        let touchPoint = (touches.first)!.locationInView(self.drawView) as CGPoint
         print("Coordinates of touchesMoved point: \(touchPoint)")
-
         currLine?.updateLine(startCoordLine, endCoord: touchPoint)
-        //let distance = sqrt(pow(touchPoint.y - currCircleCenter.y, 2) + pow(touchPoint.x - currCircleCenter.x, 2))
-        
-        //currCircle?.updateCircle(currCircleCenter,radius: distance)
         
     }
     

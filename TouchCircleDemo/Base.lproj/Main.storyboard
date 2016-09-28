@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Draw Things-->
@@ -16,7 +17,25 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qFa-Jx-Vtq">
+                                <rect key="frame" x="106" y="508" width="118" height="31"/>
+                                <connections>
+                                    <action selector="lineThicknessChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="z8R-B0-s6t"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K01-w9-QV5">
+                                <rect key="frame" x="20" y="64" width="560" height="406"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K01-w9-QV5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Abx-61-Sak"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="K01-w9-QV5" secondAttribute="bottom" constant="86" id="DrC-u7-DGq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K01-w9-QV5" secondAttribute="trailing" id="EYD-Sa-2XV"/>
+                            <constraint firstItem="K01-w9-QV5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="UUx-JE-62A"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Draw Things" id="2kj-Gk-DDq">
@@ -34,12 +53,14 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clearViewButton" destination="Hey-Qb-1Hd" id="ujs-0f-ftX"/>
+                        <outlet property="drawView" destination="K01-w9-QV5" id="cS2-pH-cNo"/>
+                        <outlet property="lineThickness" destination="qFa-Jx-Vtq" id="bUv-DW-ccW"/>
                         <outlet property="undoButton" destination="6hp-Ay-n36" id="Cji-BB-HVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="246"/>
+            <point key="canvasLocation" x="1075" y="236"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Ph-Ip-4yn">
