@@ -12,6 +12,7 @@ class LineView: UIView {
     var lineStart = CGPointZero
     var lineEnd = CGPointZero
     var linePath = [CGPoint]()
+    var lineThickness = CGPointZero
     
     func updateLine(startCoord: CGPoint, endCoord: CGPoint){
         
@@ -28,7 +29,7 @@ class LineView: UIView {
     }
     
     override func drawRect(rect: CGRect){
-        
+
         if linePath.count > 2 {
             let path = createQuadPath(linePath)
             print("drawRect from point (\(lineStart) to this \(lineEnd))")
@@ -43,7 +44,14 @@ class LineView: UIView {
             //path.fill()
         }
         else{
-        
+            
+            //let dotView = UIView(frame: self.frame)
+            //dotView.backgroundColor = UIColor.clearColor()
+            UIColor.greenColor().setFill()
+            let path = UIBezierPath()
+            path.addArcWithCenter(lineStart, radius: 2.0, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
+            path.fill()
+            
         }
     }
     

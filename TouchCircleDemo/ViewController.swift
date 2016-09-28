@@ -95,19 +95,15 @@ class ViewController: UIViewController {
         //let dot = CGRect(x: touch.x, y: touch.y, width: 1, height: 1)
         //let dotView = UIView(frame:dot)
         //self.view.addSubview()
-        
-        
-        
+
         currLine = LineView(frame: myRect)
         currLine?.backgroundColor = UIColor.clearColor()
         currLine?.lineStart = touch
         currLine?.lineEnd = touch
         
-        
-        
-        
         self.view.addSubview(currLine!)
-        
+
+                
         //TouchCircle is our new Cocoa Touch Class
         /**
         currCircle = CircleView(frame: myRect)
@@ -123,9 +119,8 @@ class ViewController: UIViewController {
         
         let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesMoved point: \(touchPoint)")
-        
+
         currLine?.updateLine(startCoordLine, endCoord: touchPoint)
-        
         //let distance = sqrt(pow(touchPoint.y - currCircleCenter.y, 2) + pow(touchPoint.x - currCircleCenter.x, 2))
         
         //currCircle?.updateCircle(currCircleCenter,radius: distance)
