@@ -9,26 +9,52 @@
         <!--Draw Things-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TouchCircleDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="TouchCircleDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo">
-                                <rect key="frame" x="18" y="509" width="118" height="31"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-kT-vwV">
+                                <rect key="frame" x="16" y="858" width="960" height="100"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo">
+                                        <rect key="frame" x="16" y="50" width="118" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="gk6-xP-GQw"/>
+                                        </constraints>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Thickness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moE-Os-g9f">
+                                        <rect key="frame" x="18" y="21" width="114" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="9vJ-lc-rbo"/>
+                                            <constraint firstAttribute="height" constant="21" id="oN9-cC-Oaq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="gk6-xP-GQw"/>
+                                    <constraint firstItem="moE-Os-g9f" firstAttribute="leading" secondItem="mHx-kT-vwV" secondAttribute="leading" constant="18" id="Aiq-4X-UvL"/>
+                                    <constraint firstItem="moE-Os-g9f" firstAttribute="top" secondItem="mHx-kT-vwV" secondAttribute="top" constant="21" id="EdW-na-Vxq"/>
+                                    <constraint firstAttribute="height" constant="100" id="LdW-9b-kjU"/>
+                                    <constraint firstAttribute="bottom" secondItem="R6C-aH-EAo" secondAttribute="bottom" constant="20" id="TMq-bh-6tM"/>
+                                    <constraint firstItem="R6C-aH-EAo" firstAttribute="leading" secondItem="mHx-kT-vwV" secondAttribute="leading" constant="18" id="Xl8-QB-dyw"/>
+                                    <constraint firstItem="R6C-aH-EAo" firstAttribute="top" secondItem="mHx-kT-vwV" secondAttribute="top" constant="50" id="j0l-X1-7RN"/>
+                                    <constraint firstItem="R6C-aH-EAo" firstAttribute="top" secondItem="moE-Os-g9f" secondAttribute="bottom" constant="8" id="prL-eZ-NHN"/>
+                                    <constraint firstAttribute="trailing" secondItem="R6C-aH-EAo" secondAttribute="trailing" constant="828" id="zWV-w6-SA5"/>
                                 </constraints>
-                            </slider>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="R6C-aH-EAo" secondAttribute="bottom" constant="17" id="Kp1-9U-iaA"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="R6C-aH-EAo" secondAttribute="leading" id="e6H-I5-oXs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mHx-kT-vwV" secondAttribute="bottom" id="88U-sk-xWv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mHx-kT-vwV" secondAttribute="trailing" id="J9Z-KB-X5c"/>
+                            <constraint firstItem="mHx-kT-vwV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="XuN-ui-79A"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -45,14 +71,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1000" height="1000"/>
                     <connections>
                         <outlet property="clearViewButton" destination="Hey-Qb-1Hd" id="ujs-0f-ftX"/>
+                        <outlet property="formatScrollView" destination="mHx-kT-vwV" id="kki-xi-wzP"/>
                         <outlet property="undoButton" destination="6hp-Ay-n36" id="Cji-BB-HVB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="236"/>
+            <point key="canvasLocation" x="1147" y="242"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Ph-Ip-4yn">

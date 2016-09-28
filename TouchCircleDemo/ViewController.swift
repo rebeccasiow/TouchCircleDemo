@@ -29,6 +29,8 @@ class ViewController: UIViewController {
     
     //keep track of first point of touch from touchesBegan to use the touch from touchesMoved to resize the circle
     
+    @IBOutlet weak var formatScrollView: UIScrollView!
+    
     @IBOutlet weak var lineThickness: UISlider!
     
     @IBOutlet weak var clearViewButton: UIBarButtonItem!
@@ -42,15 +44,16 @@ class ViewController: UIViewController {
         
         print("undo called")
         let lastThing = self.view.subviews.last
-        lastThing?.removeFromSuperview()
+        if lastThing!.frame.height == (self.view.frame.height - 100) {
+            lastThing?.removeFromSuperview()
+        }
         
         
     }
     @IBAction func clearView(sender: UIBarButtonItem) {
-        //view.setNeedsDisplay()
-        //clearViewButton.accessibilityActivate()
-        self.clearViewButton.enabled = true;
-        self.view.clearsContextBeforeDrawing = true
+
+        //self.clearViewButton.enabled = true;
+        //self.view.clearsContextBeforeDrawing = true
         for view in self.view.subviews {
             if view.frame.height == (self.view.frame.height - 100) {
                 view.removeFromSuperview()
@@ -72,6 +75,8 @@ class ViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = clearViewButton
         navigationItem.rightBarButtonItem = undoButton
+        formatScrollView.contentSize.width = 1000
+        
     }
 
     override func didReceiveMemoryWarning() {
