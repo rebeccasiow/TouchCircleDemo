@@ -9,44 +9,49 @@
 import UIKit
 
 class LineView: UIView {
-    var lineStart = CGPointZero
-    var lineEnd = CGPointZero
-    var linePath = [CGPoint]()
-    var lineThickness = CGPointZero
     
-    func updateLine(startCoord: CGPoint, endCoord: CGPoint){
+    var lineStart = CGPointZero         //Coordinate of the line's starting point
+    var lineEnd = CGPointZero           //Coordinate of the line's ending point
+    var linePath = [CGPoint]()          //Array of line's coordinates
+    var lineThickness: CGFloat = 1.0    //Thickness of line width
+    
+    func updateLine(startCoord: CGPoint, endCoord: CGPoint, lineThicknessVal: CGFloat){
         
-        //printing the previous point, 
         print("updateLine from this: x:(\(lineStart), y:\(lineEnd))")
-        //changing to this point
         print(" to this: x:\(startCoord), y:\(endCoord))")
         
         lineStart = startCoord
         lineEnd = endCoord
         linePath.append(endCoord)
+        lineThickness = lineThicknessVal
         
         setNeedsDisplay()
     }
     
     override func drawRect(rect: CGRect){
-
+        
         if linePath.count > 2 {
+            
+            // Draw line if person drags finger.
+            
             let path = createQuadPath(linePath)
-            print("drawRect from point (\(lineStart) to this \(lineEnd))")
-            //let path = createQuadPath(linePath)
             
             path.moveToPoint(lineStart)
-            //path.addLineToPoint(lineEnd)
             path.closePath()
             
             UIColor.blueColor().set()
+            path.lineWidth = lineThickness
             path.stroke()
-            //path.fill()
-        }
-        else{
             
-            //let dotView = UIView(frame: self.frame)
-            //dotView.backgroundColor = UIColor.clearColor()
+            print("drawRect from point (\(lineStart) to this \(lineEnd))")
+            print("line width: \(path.lineWidth)")
+
+        }
+            
+        else {
+            
+            // Draw a dot on touchpoint.
+            
             UIColor.greenColor().setFill()
             let path = UIBezierPath()
             path.addArcWithCenter(lineStart, radius: 2.0, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
@@ -55,6 +60,11 @@ class LineView: UIView {
         }
     }
     
+    /**
+     
+     Methods for smoothing out the bezier path for the line.
+     
+     **/
     
     private func findMidpoint(firstPoint: CGPoint, secondPoint: CGPoint) -> CGPoint {
         let midPoint:CGPoint = CGPointMake((firstPoint.x + secondPoint.x)/2.0, (firstPoint.y + secondPoint.y)/2.0)
@@ -78,15 +88,5 @@ class LineView: UIView {
         newPath.addLineToPoint(lastLocation!)
         return newPath
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

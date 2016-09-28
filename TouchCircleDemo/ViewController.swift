@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var formatScrollView: UIScrollView!
     
-    @IBOutlet weak var lineThickness: UISlider!
+    @IBOutlet weak var lineThicknessSlider: UISlider!
     
     @IBOutlet weak var clearViewButton: UIBarButtonItem!
     
@@ -67,7 +67,8 @@ class ViewController: UIViewController {
     
     var startCoordLine = CGPointZero
     var currLine: LineView? = nil
-
+    var currLineThickness:CGFloat = 1.0
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -85,7 +86,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func lineThicknessChanged(sender: UISlider) {
-        //let thickness = lineThickness.value
+        print("line thickness slider value \(lineThicknessSlider.value)")
+        currLineThickness = CGFloat(lineThicknessSlider.value)
     }
     
     /*
@@ -112,6 +114,7 @@ class ViewController: UIViewController {
             currLine?.backgroundColor = UIColor.clearColor()
             currLine?.lineStart = touch
             currLine?.lineEnd = touch
+            currLine?.lineThickness = currLineThickness
             
             self.view.addSubview(currLine!)
         }
@@ -122,7 +125,7 @@ class ViewController: UIViewController {
         let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesMoved point: \(touchPoint)")
         if touchPoint.x >= 0 && touchPoint.y >= 0 {
-            currLine?.updateLine(startCoordLine, endCoord: touchPoint)
+            currLine?.updateLine(startCoordLine, endCoord: touchPoint, lineThicknessVal: currLineThickness)
         }
         
     }

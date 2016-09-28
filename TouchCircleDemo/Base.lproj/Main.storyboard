@@ -21,12 +21,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-kT-vwV">
                                 <rect key="frame" x="16" y="858" width="960" height="100"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo">
-                                        <rect key="frame" x="16" y="50" width="118" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="114" id="gk6-xP-GQw"/>
-                                        </constraints>
-                                    </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Thickness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moE-Os-g9f">
                                         <rect key="frame" x="18" y="21" width="114" height="21"/>
                                         <constraints>
@@ -37,6 +31,15 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="11" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo" userLabel="Line Thickness Slider">
+                                        <rect key="frame" x="16" y="50" width="118" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="gk6-xP-GQw"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="lineThicknessChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="8Kg-gY-ZZ2"/>
+                                        </connections>
+                                    </slider>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="moE-Os-g9f" firstAttribute="leading" secondItem="mHx-kT-vwV" secondAttribute="leading" constant="18" id="Aiq-4X-UvL"/>
@@ -76,6 +79,7 @@
                     <connections>
                         <outlet property="clearViewButton" destination="Hey-Qb-1Hd" id="ujs-0f-ftX"/>
                         <outlet property="formatScrollView" destination="mHx-kT-vwV" id="kki-xi-wzP"/>
+                        <outlet property="lineThicknessSlider" destination="R6C-aH-EAo" id="3AN-wS-amY"/>
                         <outlet property="undoButton" destination="6hp-Ay-n36" id="Cji-BB-HVB"/>
                     </connections>
                 </viewController>
