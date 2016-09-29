@@ -79,6 +79,44 @@ class ViewController: UIViewController {
         currLineColor = sender.backgroundColor!
     }
     
+    @IBAction func templateChange(sender: UIButton) {
+        guard let templateItem = sender.titleLabel?.text else{
+            return
+        }
+        print("template is \(templateItem)")
+        
+        let templateView = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-100)
+        
+        var myImage: NSURL
+        
+        switch templateItem {
+        case "Bird":
+            print("it is a bird")
+            let myImageURL = NSURL(string: "https://s-media-cache-ak0.pinimg.com/736x/d7/19/b0/d719b0b07dda762db5c74b8fea4f036a.jpg")
+            myImage = myImageURL!
+            
+        case "Enrique":
+            let myImageURL = NSURL(string: "https://pbs.twimg.com/profile_images/667776779222781953/mLMqVpCf.jpg")
+            myImage = myImageURL!
+            
+        //case "Jenny":
+            
+        default:
+            self.view.backgroundColor = UIColor.whiteColor()
+            print("nothing here")
+            return
+        }
+        
+        let myImageData = NSData(contentsOfURL: myImage)
+        let image = UIImage(data: myImageData!)
+        
+        let showTemplate = UIImageView(image: image)
+        showTemplate.contentMode = UIViewContentMode.ScaleAspectFit
+        showTemplate.frame = templateView
+        self.view.addSubview(showTemplate)
+        
+    }
+    
     
     
 // Loading the main view.
