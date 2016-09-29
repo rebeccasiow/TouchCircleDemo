@@ -29,17 +29,19 @@ class LineView: UIView {
         setNeedsDisplay()
     }
     
+    var path: UIBezierPath!
+
     override func drawRect(rect: CGRect){
         
         drawDot(lineStart)
         
         if linePath.count > 2 {
             
-            let path = createQuadPath(linePath)
+            path = createQuadPath(linePath)
             
             path.moveToPoint(lineStart)
             path.closePath()
-            
+
             lineColor.set()
             path.lineWidth = lineThickness
             path.stroke()
@@ -54,10 +56,11 @@ class LineView: UIView {
         
     }
     
+    
     func drawDot(dotAtPoint: CGPoint){
         
+        path = UIBezierPath()
         lineColor.setFill()
-        let path = UIBezierPath()
         path.addArcWithCenter(dotAtPoint, radius: lineThickness/2.0, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
         path.fill()
         

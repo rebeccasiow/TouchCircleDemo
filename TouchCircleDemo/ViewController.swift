@@ -129,15 +129,5 @@ class ViewController: UIViewController {
         }
         
     }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
-        print("Coordinates of touchesEnded point: \(touchPoint)")
-        currLine?.drawDot(touchPoint)
-        
-    }
-    
-    
 }
 
