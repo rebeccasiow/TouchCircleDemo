@@ -27,7 +27,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //keep track of first point of touch from touchesBegan to use the touch from touchesMoved to resize the circle
+// Outlets
     
     @IBOutlet weak var formatScrollView: UIScrollView!
     
@@ -36,6 +36,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var clearViewButton: UIBarButtonItem!
     
     @IBOutlet weak var undoButton: UIBarButtonItem!
+    
+// Outlet Actions
     
     @IBAction func undoLast(sender: UIBarButtonItem) {
         
@@ -50,29 +52,24 @@ class ViewController: UIViewController {
         
         
     }
+    
     @IBAction func clearView(sender: UIBarButtonItem) {
-
-        //self.clearViewButton.enabled = true;
-        //self.view.clearsContextBeforeDrawing = true
         for view in self.view.subviews {
             if view.frame.height == (self.view.frame.height - 100) {
                 view.removeFromSuperview()
             }
         }
-        
     }
     
-    var currCircle: CircleView? = nil
-    var currCircleCenter = CGPointZero
+    @IBAction func lineThicknessChanged(sender: UISlider) {
+        print("line thickness slider value \(lineThicknessSlider.value)")
+        currLineThickness = CGFloat(lineThicknessSlider.value)
+    }
     
-    var startCoordLine = CGPointZero
-    var currLine: LineView? = nil
-    var currLineThickness:CGFloat = 1.0
+// Loading the main view.
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         navigationItem.leftBarButtonItem = clearViewButton
         navigationItem.rightBarButtonItem = undoButton
@@ -82,36 +79,38 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func lineThicknessChanged(sender: UISlider) {
-        print("line thickness slider value \(lineThicknessSlider.value)")
-        currLineThickness = CGFloat(lineThicknessSlider.value)
-    }
+    
+// Global variables to track current line format.
+    
+    var startCoordLine = CGPointZero
+    var currLine: LineView? = nil
+    var currLineThickness:CGFloat = 1.0
+    
+// User Interactions with the screen.
     
     /*
-     Idea: Enlarge radius of a circle on touch and drag out. 
-     Use: touchesBegan and touchesMoved(called when the finger is on the screen and moving, keeps track of the latest touch)
+     touchesBegan: coordinate of first touch
+     touchesMoved: called when the finger is on the screen and moving, keeps track of the latest touch
      */
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 
-        //locates touch as a coordinate from the set of UITouches, needs to be unwrapped
         let touch = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesBegan point: \(touch)")
         
-        //if the first touch is outside of the bounds of drawRect
-        //let spacingForToolBar: CGFloat = 100
+        // Draw only if inside Draw View.
         
-        if touch.y < (self.view.frame.height - 100) {
+        if touch.y < (self.view.frame.height - formatScrollView.frame.height) {
+            
             startCoordLine = touch
             
-            //make static space for the formatting things to go at the bottom, slider, colors,
-            
-            let drawingRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-100)
+            let drawingRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: (self.view.frame.height - formatScrollView.frame.height) )
             
             currLine = LineView(frame: drawingRect)
             currLine?.backgroundColor = UIColor.clearColor()
+            
             currLine?.lineStart = touch
             currLine?.lineEnd = touch
             currLine?.lineThickness = currLineThickness
@@ -124,9 +123,18 @@ class ViewController: UIViewController {
         
         let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
         print("Coordinates of touchesMoved point: \(touchPoint)")
+        
         if touchPoint.x >= 0 && touchPoint.y >= 0 {
             currLine?.updateLine(startCoordLine, endCoord: touchPoint, lineThicknessVal: currLineThickness)
         }
+        
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        let touchPoint = (touches.first)!.locationInView(self.view) as CGPoint
+        print("Coordinates of touchesEnded point: \(touchPoint)")
+        currLine?.drawDot(touchPoint)
         
     }
     

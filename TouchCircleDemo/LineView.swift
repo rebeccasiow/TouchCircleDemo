@@ -14,6 +14,7 @@ class LineView: UIView {
     var lineEnd = CGPointZero           //Coordinate of the line's ending point
     var linePath = [CGPoint]()          //Array of line's coordinates
     var lineThickness: CGFloat = 1.0    //Thickness of line width
+    var lineColor: UIColor = UIColor.blackColor()
     
     func updateLine(startCoord: CGPoint, endCoord: CGPoint, lineThicknessVal: CGFloat){
         
@@ -30,34 +31,36 @@ class LineView: UIView {
     
     override func drawRect(rect: CGRect){
         
+        drawDot(lineStart)
+        
         if linePath.count > 2 {
-            
-            // Draw line if person drags finger.
             
             let path = createQuadPath(linePath)
             
             path.moveToPoint(lineStart)
             path.closePath()
             
-            UIColor.blueColor().set()
+            lineColor.set()
             path.lineWidth = lineThickness
             path.stroke()
             
             print("drawRect from point (\(lineStart) to this \(lineEnd))")
             print("line width: \(path.lineWidth)")
-
-        }
-            
-        else {
-            
-            // Draw a dot on touchpoint.
-            
-            UIColor.greenColor().setFill()
-            let path = UIBezierPath()
-            path.addArcWithCenter(lineStart, radius: 2.0, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
-            path.fill()
             
         }
+        
+        print("line end: \(lineEnd)")
+        drawDot(lineEnd)
+        
+    }
+    
+    func drawDot(dotAtPoint: CGPoint){
+        
+        lineColor.setFill()
+        let path = UIBezierPath()
+        path.addArcWithCenter(dotAtPoint, radius: lineThickness/2.0, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
+        path.fill()
+        
     }
     
     /**
@@ -88,5 +91,5 @@ class LineView: UIView {
         newPath.addLineToPoint(lastLocation!)
         return newPath
     }
-
+    
 }

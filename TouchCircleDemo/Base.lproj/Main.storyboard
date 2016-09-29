@@ -31,7 +31,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="11" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo" userLabel="Line Thickness Slider">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo" userLabel="Line Thickness Slider">
                                         <rect key="frame" x="16" y="50" width="118" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="114" id="gk6-xP-GQw"/>
