@@ -13,8 +13,8 @@
  DONE: [40 points] Users can draw continuous lines by tapping and dragging.
  DONE: [10 points] Lines drawn must be smooth (no jagged edges).
  DONE: [5 points] Users can “undo” to erase the last line drawn.
- [5 points] Users can selected from multiple (at least 5) color options.
- [5 points] There is a slider to adjust the thickness of drawn lines.
+ DONE: [5 points] Users can selected from multiple (at least 5) color options.
+ DONE: [5 points] There is a slider to adjust the thickness of drawn lines.
  DONE: [10 points] Single taps result in dots.
  DONE: [5 points] Users can easily erase all lines on the page.
  [20 points] Creative portion: Add 2 other small features (ability to add a title, users can change
@@ -37,9 +37,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var undoButton: UIBarButtonItem!
     
+    @IBOutlet weak var redoButton: UIBarButtonItem!
     
     
 // Outlet Actions
+    
+    var lastThing: UIView!
     
     @IBAction func undoLast(sender: UIBarButtonItem) {
         
@@ -47,12 +50,15 @@ class ViewController: UIViewController {
         self.view.clearsContextBeforeDrawing = true
         
         print("undo called")
-        let lastThing = self.view.subviews.last
+        lastThing = self.view.subviews.last
         if lastThing!.frame.height == (self.view.frame.height - 100) {
             lastThing?.removeFromSuperview()
         }
         
-        
+    }
+    
+    @IBAction func redoLast(sender: UIBarButtonItem) {
+        self.view.addSubview(lastThing)
     }
     
     @IBAction func clearView(sender: UIBarButtonItem) {
@@ -82,6 +88,7 @@ class ViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = clearViewButton
         navigationItem.rightBarButtonItem = undoButton
+        navigationItem.rightBarButtonItem = redoButton
         formatScrollView.contentSize.width = 1000
         
     }

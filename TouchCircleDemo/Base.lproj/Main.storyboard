@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Draw Things-->
@@ -108,11 +109,18 @@
                                 <action selector="clearView:" destination="BYZ-38-t0r" id="GEb-tO-pvq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Undo" id="6hp-Ay-n36">
-                            <connections>
-                                <action selector="undoLast:" destination="BYZ-38-t0r" id="BsB-ex-FRz"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Undo" id="6hp-Ay-n36">
+                                <connections>
+                                    <action selector="undoLast:" destination="BYZ-38-t0r" id="BsB-ex-FRz"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Redo" id="Wkr-T2-ts7">
+                                <connections>
+                                    <action selector="redoLast:" destination="BYZ-38-t0r" id="bZY-b0-EiT"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -121,6 +129,7 @@
                         <outlet property="clearViewButton" destination="Hey-Qb-1Hd" id="ujs-0f-ftX"/>
                         <outlet property="formatScrollView" destination="mHx-kT-vwV" id="kki-xi-wzP"/>
                         <outlet property="lineThicknessSlider" destination="R6C-aH-EAo" id="3AN-wS-amY"/>
+                        <outlet property="redoButton" destination="Wkr-T2-ts7" id="k8A-Dl-XBB"/>
                         <outlet property="undoButton" destination="6hp-Ay-n36" id="Cji-BB-HVB"/>
                     </connections>
                 </viewController>
