@@ -99,11 +99,19 @@ class ViewController: UIViewController {
             let myImageURL = NSURL(string: "https://pbs.twimg.com/profile_images/667776779222781953/mLMqVpCf.jpg")
             myImage = myImageURL!
             
-        //case "Jenny":
-            
-        default:
+        case "Sheep":
+            let myImageURL = NSURL(string: "https://i.imgur.com/IYuULom.jpg")
+            myImage = myImageURL!
+        
+        case "Vicky":
+            let myImageURL = NSURL(string: "https://scontent-ord1-1.xx.fbcdn.net/t31.0-8/10575284_551815004922530_3655500328147147830_o.jpg")
+            myImage = myImageURL!
+        
+        case "Empty":
             self.view.backgroundColor = UIColor.whiteColor()
-            print("nothing here")
+            print("empty background")
+            return
+        default:
             return
         }
         

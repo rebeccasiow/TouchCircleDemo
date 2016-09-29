@@ -92,6 +92,23 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxv-rk-yww">
                                         <rect key="frame" x="460" y="50" width="53" height="30"/>
                                         <state key="normal" title="Enrique"/>
+                                        <connections>
+                                            <action selector="templateChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QOs-Eb-Fx1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzi-Ly-JFh">
+                                        <rect key="frame" x="532" y="50" width="44" height="30"/>
+                                        <state key="normal" title="Sheep"/>
+                                        <connections>
+                                            <action selector="templateChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j7W-dZ-qBM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mqj-8S-Wgp">
+                                        <rect key="frame" x="593" y="50" width="38" height="30"/>
+                                        <state key="normal" title="Vicky"/>
+                                        <connections>
+                                            <action selector="templateChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eAQ-LM-bFr"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a Template!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdD-K5-EII">
                                         <rect key="frame" x="403" y="21" width="152" height="21"/>
@@ -99,9 +116,12 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzi-Ly-JFh">
-                                        <rect key="frame" x="533" y="50" width="41" height="30"/>
-                                        <state key="normal" title="Jenny"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylk-SM-LXE">
+                                        <rect key="frame" x="648" y="50" width="44" height="30"/>
+                                        <state key="normal" title="Empty"/>
+                                        <connections>
+                                            <action selector="templateChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ncU-jK-NsL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
