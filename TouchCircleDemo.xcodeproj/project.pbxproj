@@ -15,6 +15,7 @@
 		B22FE7481D92F49000A500B7 /* TouchCircleDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7471D92F49000A500B7 /* TouchCircleDemoTests.swift */; };
 		B22FE7531D92F49000A500B7 /* TouchCircleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7521D92F49000A500B7 /* TouchCircleDemoUITests.swift */; };
 		B22FE7611D92F65300A500B7 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FE7601D92F65300A500B7 /* CircleView.swift */; };
+		B2CE01F41D9CA59E002AA10B /* ColorSelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CE01F31D9CA59E002AA10B /* ColorSelectorButton.swift */; };
 		B2D85AF91D96FA62004E8E13 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D85AF81D96FA62004E8E13 /* LineView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		B22FE7521D92F49000A500B7 /* TouchCircleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchCircleDemoUITests.swift; sourceTree = "<group>"; };
 		B22FE7541D92F49000A500B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B22FE7601D92F65300A500B7 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		B2CE01F31D9CA59E002AA10B /* ColorSelectorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorSelectorButton.swift; path = ../ColorSelectorButton.swift; sourceTree = "<group>"; };
 		B2D85AF81D96FA62004E8E13 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				B2D85AF81D96FA62004E8E13 /* LineView.swift */,
 				B22FE7361D92F48F00A500B7 /* Main.storyboard */,
 				B22FE7601D92F65300A500B7 /* CircleView.swift */,
+				B2CE01F31D9CA59E002AA10B /* ColorSelectorButton.swift */,
 				B22FE7391D92F49000A500B7 /* Assets.xcassets */,
 				B22FE73B1D92F49000A500B7 /* LaunchScreen.storyboard */,
 				B22FE73E1D92F49000A500B7 /* Info.plist */,
@@ -266,6 +269,7 @@
 				B22FE7611D92F65300A500B7 /* CircleView.swift in Sources */,
 				B22FE7351D92F48F00A500B7 /* ViewController.swift in Sources */,
 				B22FE7331D92F48F00A500B7 /* AppDelegate.swift in Sources */,
+				B2CE01F41D9CA59E002AA10B /* ColorSelectorButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,9 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-kT-vwV">
-                                <rect key="frame" x="16" y="858" width="960" height="100"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-kT-vwV">
+                                <rect key="frame" x="20" y="856" width="960" height="100"/>
                                 <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo" userLabel="Line Thickness Slider">
+                                        <rect key="frame" x="16" y="50" width="118" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="gk6-xP-GQw"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="lineThicknessChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="8Kg-gY-ZZ2"/>
+                                        </connections>
+                                    </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Thickness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moE-Os-g9f">
                                         <rect key="frame" x="18" y="21" width="114" height="21"/>
                                         <constraints>
@@ -31,15 +40,47 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-aH-EAo" userLabel="Line Thickness Slider">
-                                        <rect key="frame" x="16" y="50" width="118" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="114" id="gk6-xP-GQw"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pen Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og6-68-NlV">
+                                        <rect key="frame" x="244" y="16" width="75" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-8J-B9q" customClass="ColorSelectorButton" customModule="TouchCircleDemo" customModuleProvider="target">
+                                        <rect key="frame" x="165" y="50" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="lineThicknessChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="8Kg-gY-ZZ2"/>
+                                            <action selector="colorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dt2-xg-E0P"/>
                                         </connections>
-                                    </slider>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIq-ig-QzG" customClass="ColorSelectorButton" customModule="TouchCircleDemo" customModuleProvider="target">
+                                        <rect key="frame" x="210" y="50" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="colorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hf1-H0-fJR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5QK-x4-VtD" customClass="ColorSelectorButton" customModule="TouchCircleDemo" customModuleProvider="target">
+                                        <rect key="frame" x="255" y="50" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="colorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TMc-Kf-hCI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16c-13-gG9" customClass="ColorSelectorButton" customModule="TouchCircleDemo" customModuleProvider="target">
+                                        <rect key="frame" x="299" y="50" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="colorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I75-78-Fkr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdy-co-NIj" customClass="ColorSelectorButton" customModule="TouchCircleDemo" customModuleProvider="target">
+                                        <rect key="frame" x="344" y="50" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="colorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRm-nt-Ofb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="moE-Os-g9f" firstAttribute="leading" secondItem="mHx-kT-vwV" secondAttribute="leading" constant="18" id="Aiq-4X-UvL"/>

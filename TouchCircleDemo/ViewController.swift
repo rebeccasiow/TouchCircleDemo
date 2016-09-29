@@ -37,6 +37,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var undoButton: UIBarButtonItem!
     
+    
+    
 // Outlet Actions
     
     @IBAction func undoLast(sender: UIBarButtonItem) {
@@ -66,6 +68,13 @@ class ViewController: UIViewController {
         currLineThickness = CGFloat(lineThicknessSlider.value)
     }
     
+    @IBAction func colorChange(sender: ColorSelectorButton) {
+        print("Color changed")
+        currLineColor = sender.backgroundColor!
+    }
+    
+    
+    
 // Loading the main view.
     
     override func viewDidLoad() {
@@ -87,6 +96,7 @@ class ViewController: UIViewController {
     var startCoordLine = CGPointZero
     var currLine: LineView? = nil
     var currLineThickness:CGFloat = 1.0
+    var currLineColor: UIColor = UIColor.blackColor()
     
 // User Interactions with the screen.
     
@@ -114,6 +124,7 @@ class ViewController: UIViewController {
             currLine?.lineStart = touch
             currLine?.lineEnd = touch
             currLine?.lineThickness = currLineThickness
+            currLine?.lineColor = currLineColor
             
             self.view.addSubview(currLine!)
         }
